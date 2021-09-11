@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\HomeController as AdminHomeController;
+use App\Http\Controllers\client\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[HomeController::class,'index'])->name('client.index');
+Route::get('/adminpanel',[AdminHomeController::class,'index'])->name('admin.index');
