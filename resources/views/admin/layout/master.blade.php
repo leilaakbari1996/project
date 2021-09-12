@@ -251,41 +251,7 @@
                 </li>
               </ul>
             </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-tree"></i>
-                <p>
-                  اشیای گرافیکی
-                  <i class="fa fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="pages/UI/general.html" class="nav-link">
-                    <i class="fa fa-circle-o nav-icon"></i>
-                    <p>عمومی</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/UI/icons.html" class="nav-link">
-                    <i class="fa fa-circle-o nav-icon"></i>
-                    <p>آیکون‌ها</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/UI/buttons.html" class="nav-link">
-                    <i class="fa fa-circle-o nav-icon"></i>
-                    <p>دکمه‌ها</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/UI/sliders.html" class="nav-link">
-                    <i class="fa fa-circle-o nav-icon"></i>
-                    <p>اسلایدر‌ها</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
+
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-edit"></i>
@@ -315,6 +281,29 @@
                 </li>
               </ul>
             </li>
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fa fa-table"></i>
+                  <p>
+                    دسته بندی
+                    <i class="fa fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{route('admin.category.create')}}" class="nav-link">
+                      <i class="fa fa-circle-o nav-icon"></i>
+                      <p>ایجاد</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{route('admin.category.index')}}" class="nav-link">
+                      <i class="fa fa-circle-o nav-icon"></i>
+                      <p>لیست</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-table"></i>
@@ -486,33 +475,15 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+  <section class="content">
+       <div class="container-fluid">
+           @include('admin.layout.error')
+           @include('admin.category.success')
+           @yield('content')
+       </div>
+  </section>
+  <!-- Main content -->
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">داشبورد</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-left">
-              <li class="breadcrumb-item"><a href="#">خانه</a></li>
-              <li class="breadcrumb-item active">داشبورد ورژن 2</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-
-  </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>CopyLeft &copy; 2018 <a href="http://github.com/hesammousavi/">حسام موسوی</a>.</strong>
-  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
