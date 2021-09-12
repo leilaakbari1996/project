@@ -35,42 +35,52 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>دسته بندی</th>
-                        <th>والد</th>
-                        <th>ویرایش</th>
-                        <th>حذف</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($categories as $category)
+                     @if ($categories->count() == 0)
+                        <div class="alert alert-info alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5><i class="icon fa fa-check"></i> توجه!</h5>
+                            در حال حاضر هیچ دسته بندی وجود ندارد
+                            <a href="{{route('admin.category.create')}}"
+                            class="btn btn-sm btn-dark" style="text-decoration: none">اضاف کردن دسته بندی</a>
+                        </div>
+                     @else
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
                             <tr>
-                                <td>{{$category->id}}</td>
-                                <td>{{$category->title}}
-                                </td>
-                                <td>
-                                    {{optional($category->parent)->title}}
-                                </td>
-                                <td>
-                                    <a href="{{route('admin.category.edit',$category)}}">ویرایش</a>
-                                </td>
-                                <td>
-                                    <form action="{{route('admin.category.destroy',$category)}}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <div class="form-group">
-                                            <input type="submit" class="btn btn-sm btn-danger" value="حذف">
-                                        </div>
-                                    </form>
-                                </td>
+                                <th>#</th>
+                                <th>دسته بندی</th>
+                                <th>والد</th>
+                                <th>ویرایش</th>
+                                <th>حذف</th>
                             </tr>
-                        @endforeach
+                            </thead>
+                            <tbody>
+                                @foreach ($categories as $category)
+                                    <tr>
+                                        <td>{{$category->id}}</td>
+                                        <td>{{$category->title}}
+                                        </td>
+                                        <td>
+                                            {{optional($category->parent)->title}}
+                                        </td>
+                                        <td>
+                                            <a href="{{route('admin.category.edit',$category)}}">ویرایش</a>
+                                        </td>
+                                        <td>
+                                            <form action="{{route('admin.category.destroy',$category)}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <div class="form-group">
+                                                    <input type="submit" class="btn btn-sm btn-danger" value="حذف">
+                                                </div>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
 
 
-                </table>
+                        </table>
+                     @endif
                 </div>
                 <!-- /.card-body -->
             </div>
