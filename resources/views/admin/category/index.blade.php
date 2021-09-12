@@ -35,7 +35,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    @if (count($categories) > 0)
+
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                             <tr>
@@ -72,15 +72,7 @@
 
 
                         </table>
-                    @else
-                        <div class="alert alert-info alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <h5><i class="icon fa fa-check"></i> توجه!</h5>
-                             هنوز هیچ دسته بندی ثبت نشده است.
-                             <a href="{{route('admin.category.create')}}"
-                             class="btn btn-sm btn-dark" style="text-decoration: none">اضاف کردن دسته بندی</a>
-                        </div>
-                    @endif
+
                 </div>
                 <!-- /.card-body -->
             </div>
