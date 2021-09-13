@@ -13,12 +13,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>لیست دسته بندی ها</h1>
+                <h1>لیست برند ها</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-left">
                 <li class="breadcrumb-item"><a href="#">خانه</a></li>
-                <li class="breadcrumb-item active">لیست دسته بندی ها</li>
+                <li class="breadcrumb-item active">لیست برند ها</li>
                 </ol>
             </div>
             </div>
@@ -35,40 +35,32 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-
-                     @if ($categories->count() == 0)
-                        <div class="alert alert-info alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <h5><i class="icon fa fa-check"></i> توجه!</h5>
-                            در حال حاضر هیچ دسته بندی وجود ندارد
-                            <a href="{{route('admin.category.create')}}"
-                            class="btn btn-sm btn-dark" style="text-decoration: none">اضاف کردن دسته بندی</a>
-                        </div>
-                     @else
+                    @if (count($brands) > 0)
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>دسته بندی</th>
-                                <th>والد</th>
+                                <th>برند</th>
+                                <th>تصویر</th>
                                 <th>ویرایش</th>
                                 <th>حذف</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categories as $category)
+                                @foreach ($brands as $brand)
                                     <tr>
-                                        <td>{{$category->id}}</td>
-                                        <td>{{$category->title}}
+                                        <td>{{$brand->id}}</td>
+                                        <td>{{$brand->title}}
                                         </td>
                                         <td>
-                                            {{optional($category->parent)->title}}
+                                            <img src="{{str_replace('public/brand','/storage/image',$brand->image)}}"
+                                            alt="{{$brand->title}}" width="50px">
                                         </td>
                                         <td>
-                                            <a href="{{route('admin.category.edit',$category)}}">ویرایش</a>
+                                            <a href="{{route('admin.brand.edit',$brand)}}">ویرایش</a>
                                         </td>
                                         <td>
-                                            <form action="{{route('admin.category.destroy',$category)}}" method="POST">
+                                            <form action="{{route('admin.brand.destroy',$brand)}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <div class="form-group">
@@ -81,10 +73,15 @@
 
 
                         </table>
-
-
-                        </table>
-                     @endif
+                    @else
+                        <div class="alert alert-info alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5><i class="icon fa fa-check"></i> توجه!</h5>
+                             هنوز هیچ  برند ثبت نشده است.
+                             <a href="{{route('admin.brand.create')}}"
+                             class="btn btn-sm btn-dark" style="text-decoration: none">اضاف کردن برند</a>
+                        </div>
+                    @endif
                 </div>
                 <!-- /.card-body -->
             </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\HomeController as AdminHomeController;
 use App\Http\Controllers\client\HomeController;
@@ -20,4 +21,5 @@ Route::get('/',[HomeController::class,'index'])->name('client.index');
 Route::get('/adminpanel',[AdminHomeController::class,'index'])->name('admin.index');
 Route::prefix('/adminpanel/')->name('admin.')->group(function(){
     Route::resource('category',CategoryController::class);
+    Route::resource('brand', BrandController::class);
 });
